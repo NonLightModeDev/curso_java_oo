@@ -1,11 +1,12 @@
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
-public class Main {
+public class DataHora1 {
     public static void main(String[] args) {
+        // Instanciando data e hora
+
         LocalDate date1 = LocalDate.now(); // YYYY-MM-DD
         LocalDateTime date2 = LocalDateTime.now(); // YYYY-MM-DDTHH:mm:ss.ms sem fuso (local, da minha máquina)
         Instant date3 = Instant.now(); // YYYY-MM-DDTHH:mm:ss.ms com fuso (global, o horário de Londres)
@@ -24,6 +25,10 @@ public class Main {
         DateTimeFormatter fmt2 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         LocalDateTime date10 = LocalDateTime.parse("27/01/2026 11:27", fmt2);
 
+
+        LocalDate date11 = LocalDate.of(2022, 12, 30);
+        LocalDateTime date12 = LocalDateTime.of(2022, 12, 30, 23, 59, 59);
+
         System.out.println("date1 = " + date1);
         System.out.println("date2 = " + date2);
         System.out.println("date3 = " + date3);
@@ -34,5 +39,7 @@ public class Main {
         System.out.println("date8 = " + date8);
         System.out.println("date9 = " + date9);
         System.out.println("date10 = " + date10);
+        System.out.println("date11 = " + date11);
+        System.out.println("date12 = " + date12);
     }
 }
