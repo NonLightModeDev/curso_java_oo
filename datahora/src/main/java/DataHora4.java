@@ -1,3 +1,4 @@
+import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -36,6 +37,19 @@ public class DataHora4 {
         System.out.println("date3 = " + date3);
         System.out.println("pastWeekInstant = " + pastWeekInstant);
         System.out.println("nextWeekInstant = " + nextWeekInstant);
+        System.out.println("-----------------------------------\n");
+
+
+        // Calcular duração
+        System.out.println("\n\n-----------------------------------\n\n");
+
+        Duration t1 = Duration.between(pastWeekLocalDate.atTime(0, 0, 0), date1.atTime(0, 0, 0)); // como LocalDate não tem hora, é preciso definir uma hora qualquer para poder calcular a duração já que, por debaixo dos panos, é calculado utilizando milissegundos (e, para ter os milissegundos precisos, faz-se necessário definir a hora). Pode-se utlizar o método atStartOfDay(), que define o dia para o primeiro horário do dia (00:00:00)
+        Duration t2 = Duration.between(pastWeekLocalDateTime, date2);
+        Duration t3 = Duration.between(date3, pastWeekInstant);
+        System.out.println("-----------------------------------");
+        System.out.println("t1 dias = " + t1.toDays());
+        System.out.println("t2 dias = " + t2.toDays());
+        System.out.println("t3 dias = " + t3.toDays());
         System.out.println("-----------------------------------\n");
     }
 }
