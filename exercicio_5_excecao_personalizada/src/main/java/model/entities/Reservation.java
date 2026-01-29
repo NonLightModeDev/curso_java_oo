@@ -3,7 +3,6 @@ package model.entities;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 
 public class Reservation {
     private int roomNumber;
@@ -42,9 +41,19 @@ public class Reservation {
         return Duration.between(checkin.atStartOfDay(), checkout.atStartOfDay()).toDays();
     }
 
-    public void updateDays(LocalDate checkin, LocalDate checkout) {
+    public String updateDates(LocalDate checkin, LocalDate checkout) {
+        LocalDate now = LocalDate.now();
+        if(checkin.isBefore(now) || checkout.isBefore(now)) {
+            return "Error in reservation: Reservation dates for update must be future dates";
+        }
+        if (checkout.isBefore(checkin)){
+            return "Error in reservation: Check-out date must be after check-in date.";
+        }
+
         this.checkin = checkin;
         this.checkout = checkout;
+
+        return null;
     }
 
     @Override
